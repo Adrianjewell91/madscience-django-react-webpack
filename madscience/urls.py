@@ -19,6 +19,8 @@ from django.contrib import admin
 from django.views.generic import View
 from django.http import HttpResponse
 
+import os
+
 class ReactAppView(View):
 
     def get(self, request):
