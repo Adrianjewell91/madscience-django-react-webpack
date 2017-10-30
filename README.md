@@ -1,6 +1,6 @@
 # 中文：A django/react skeleton using Webpack and Heroku Django template.
 
-### 怎样把Django后台跟React.js利用webpack和起来的网路应用一小部分。
+### 怎样把Django后台跟React.js利用webpack合起来的网路应用一小部分。
 
 ## Features (功能)
 
@@ -57,7 +57,7 @@ babel-preset-es2015`
 5. 创一个文件夹叫 `frontend`, 在里面创一个文件夹叫 `static`, 再创两个文件叫`entry.js`和
 `index.html`。以上的代码可以表现怎么写。
 
-6.  再`settings.py`把以下的代码变成最下的。
+6.  在`settings.py`里面把以下的代码变成最下的。
 
 ```python
 # Static files (CSS, JavaScript, Images)
@@ -81,11 +81,38 @@ STATICFILES_DIRS = (
     os.path.join(os.path.join(BASE_DIR, 'frontend'),'static'),
 )
 ```
+这个是告诉Django后台React数据户在哪儿。这以上的代码跟Webpack.config.js合作。
+
+7. 最后的需要是创造Django后台的URL：
+
+```python
+from django.conf.urls import url
+from django.contrib import admin
+
+from django.views.generic import View
+from django.http import HttpResponse
+
+import os
+
+class ReactAppView(View):
+    def get(self, request):
+        try:
+
+            with open(os.path.join('frontend', 'index.html')) as file:
+                return HttpResponse(file.read())
+
+        except :
+            return HttpResponse(
+                """
+                index.html not found ! build your React app !!
+                """,
+                status=501,
+            )
 
 
-
-1. Install npm, modules
-1.5 Create Webpack config file.
-2. Create frontend folder,
-3. Create url and React App Routes
-4. Create React entry file and information
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^',ReactAppView.as_view())
+]
+```
+这以上是在`urls.py`里面的代码。
