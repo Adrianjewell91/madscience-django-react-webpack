@@ -81,7 +81,7 @@ STATICFILES_DIRS = (
     os.path.join(os.path.join(BASE_DIR, 'frontend'),'static'),
 )
 ```
-这个是告诉Django后台React数据户在哪儿。这以上的代码跟Webpack.config.js合作。
+这个是告诉Django后台在哪儿文件夹找那一个React的数据户。这以上的代码，跟Webpack.config.js合作。
 
 7. 最后的需要是创造Django后台的URL：
 
