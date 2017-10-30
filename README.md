@@ -24,6 +24,7 @@ babel-preset-es2015`
 4. 数据户撞上的时候, 做成一张webpack.config.js, 好像这样：
 
 ```javascript
+  // webpack.config.js
   path = require('path')
 
   module.exports = {
@@ -55,11 +56,13 @@ babel-preset-es2015`
 那一些复数有点儿复杂， 就是告诉Django后台怎么找道React.js前台的资源。
 
 5. 创一个文件夹叫 `frontend`, 在里面创一个文件夹叫 `static`, 再创两个文件叫`entry.js`和
-`index.html`。以上的代码可以表现怎么写。
+`index.html`。如果有不清晰的地方，可以查看repo内具体代码。
 
 6.  在`settings.py`里面把以下的代码变成最下的。
 
 ```python
+# /madscience/settings.py
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
@@ -81,11 +84,12 @@ STATICFILES_DIRS = (
     os.path.join(os.path.join(BASE_DIR, 'frontend'),'static'),
 )
 ```
-这个是告诉Django后台在哪儿文件夹找那一个React的数据户。这以上的代码，跟Webpack.config.js合作。
+这个是告诉Django后台在哪儿文件夹找那一个React的数据户。用`/frontend/webpack.config.js`跟`/madscience/settings.py`可以实现这个功能
 
 7. 最后的需要是创造Django后台的URL：
 
 ```python
+# /madscience/urls.py
 from django.conf.urls import url
 from django.contrib import admin
 
