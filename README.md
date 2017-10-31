@@ -1,6 +1,7 @@
 # 中文：A django/react skeleton using Webpack and Heroku Django template.
 
-### 如何利用webpack把Django后端与React.js前段链接起来。
+### 如何利用webpack把Django后端与React.js前段连接起来。
+### Thank you to Chris Guan for proof-reading. 谢谢Chris Guan修改这个文章。
 
 ## How-to （操作步骤)
 
