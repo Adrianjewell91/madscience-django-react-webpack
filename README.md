@@ -117,4 +117,4 @@ urlpatterns = [
     url(r'^',ReactAppView.as_view())
 ]
 ```
-以上是在`urls.py`里面的代码。
+以上是在`urls.py`里所需代码。
