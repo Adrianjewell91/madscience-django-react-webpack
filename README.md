@@ -9,7 +9,7 @@
 
 2. 没有提示错误，用`npm`结合数据库的方法： `npm init --yes`
 
-3. 陈宫后，运行： `npm install --save webpack
+3. 成功后，运行： `npm install --save webpack
 react
 react-dom
 react-router-dom
