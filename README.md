@@ -1,13 +1,15 @@
 # 中文：A django/react skeleton using Webpack and Heroku Django template.
 
-### 如何利用webpack把Django后端与React.js前段连接起来。
+### 如何利用webpack把Django后端与React.js前段连接起来。How to Combine React.js with Django using webpack. 
+
 ### Thank you to Chris Guan for proof-reading. 谢谢Chris Guan修改这个文章。
 
 ## How-to （操作步骤)
 
-1. 把Django Heroku Template下载， 阅读not_README.md内的教程。可能需要用到： `python manage.py runserver`.
+1. 把Django Heroku Template下载， 阅读not_README.md内的教程。可能需要用到： `python manage.py runserver`.  Download the Django Heroku Template (https://github.com/heroku/heroku-django-template) and follow the instructions for setup in not_README.md.
 
-2. 没有提示错误，用`npm`结合数据库的方法： `npm init --yes`
+
+2. 没有提示错误，用`npm`结合数据库的方法： `npm init --yes.`  If it all goes well, start the npm installation with `npm init --yes.`
 
 3. 成功后，运行： `npm install --save webpack
 react
@@ -20,7 +22,10 @@ babel-loader
 babel-preset-react
 babel-preset-es2015`
 
+
 4. 与数据库连接成功后, 修改webpack.config.js：
+
+When the above packages are installed, create a webpack.config.js:
 
 ```javascript
   // webpack.config.js
@@ -54,9 +59,10 @@ babel-preset-es2015`
 ```
 那一些复数看似复杂， 目的是让Django后端连接上React.js前端的资源。
 
-5. 创建一个叫`frontend`文件夹, 在里面创建一个文件夹叫 `static`, 然后再分别创建`entry.js`和`index.html`两个文件。如果有不清晰的地方，可以查看repo内具体代码。
 
-6.  在`settings.py`里面把以下的代码变成最下的。
+5. 创建一个叫`frontend`文件夹, 在里面创建一个文件夹叫 `static`, 然后再分别创建`entry.js`和`index.html`两个文件。如果有不清晰的地方，可以查看repo内具体代码。Create a `frontend` folder. Inside it, create a `static` folder, and also create an `entry.jsx` and `index.html`. 
+
+6.  在`settings.py`里面把以下的代码变成最下的。Inside `madscience/settings.py` change the code to the following.
 
 ```python
 # /madscience/settings.py
@@ -82,9 +88,9 @@ STATICFILES_DIRS = (
     os.path.join(os.path.join(BASE_DIR, 'frontend'),'static'),
 )
 ```
-这个是告诉Django后台在哪个文件夹能找那一个React的数据库。`/frontend/webpack.config.js`跟`/madscience/settings.py`可以实现这个功能。
+这个是告诉Django后台在哪个文件夹能找那一个React的数据库。`/frontend/webpack.config.js`跟`/madscience/settings.py`可以实现这个功能。 The above code examples allow Django to access the bundled javascript files.
 
-7. 最后，需要创建Django后台的URL：
+7. 最后，需要创建Django后台的urls.py. Put this inside the urls.py:
 
 ```python
 # /madscience/urls.py
