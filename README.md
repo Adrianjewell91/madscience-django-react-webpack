@@ -123,4 +123,7 @@ urlpatterns = [
     url(r'^',ReactAppView.as_view())
 ]
 ```
+
 以上是在`urls.py`里所需代码。
+
+也是需要`.gitignore`里面没有`bundle.js`和`bundle.js.map`的。
